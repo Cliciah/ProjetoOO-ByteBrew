@@ -8,6 +8,6 @@ public class ClienteStandard extends ClienteCadastrado {
 
     @Override
 	public int calcularXP(double valorCompra) {
-		return (int)(valorCompra * 1);
+		return (int)valorCompra;
 	}
 }
