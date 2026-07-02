@@ -1,5 +1,3 @@
-package br.edu.cafeteria.modelo;
-
 class Main {
     public static void main(String[] args) {
         System.out.println("Iniciando o sistema Byte & Brew...");
@@ -7,7 +5,7 @@ class Main {
 }
 
 // produtos
-public abstract class Produto {
+abstract class Produto {
     protected int codigo;
     protected double precoBase;
     protected String nome;
@@ -38,23 +36,13 @@ public abstract class Produto {
     public abstract String getTipo(); 
 }
 
+//bebida
 class Bebida extends Produto { 
+
+    // atributos necessários para puxar os dados de Produto
     public Bebida(int codigo, String nome, double precoBase, int quantidadeEstoque) {
         super(codigo, nome, precoBase, quantidadeEstoque);
     }
-
-    @Override
-    public String getTipo() {
-        return "Bebida";
-    }
-}
-
-//bebida
-package br.edu.cafeteria.modelo;
-
-public class Bebida extends Produto { 
-    private char tamanho; 
-    private int quantidadeCafeina; 
 
     public Bebida(int codigo, String nome, double precoBase, int quantidadeEstoque, char tamanho, int quantidadeCafeina) {
         super(codigo, nome, precoBase, quantidadeEstoque); 
@@ -62,7 +50,7 @@ public class Bebida extends Produto {
         this.quantidadeCafeina = quantidadeCafeina;
     }
     
-        public void alterarTamanho(char novoTamanho) {
+    public void alterarTamanho(char novoTamanho) {
         this.tamanho = novoTamanho;
     }
 
@@ -70,17 +58,24 @@ public class Bebida extends Produto {
         this.quantidadeCafeina = novaQuantidade;
     }
 
-        public char getTamanho() { return tamanho; }
+    public char getTamanho() { return tamanho; }
     public int getQuantidadeCafeina() { return quantidadeCafeina; }
+
+    @Override
+    public String getTipo() {
+        return "Bebida";
+    }
+
+    private char tamanho; 
+    private int quantidadeCafeina; 
 }
 
 //comida
-package br.edu.cafeteria.modelo;
+class Comida extends Produto { 
 
-public class Comida extends Produto { 
-    private float tempoPreparo; 
-    private boolean semGluten;
-    private boolean vegano;
+    public Comida(int codigo, String nome, double precoBase, int quantidadeEstoque) {
+        super(codigo, nome, precoBase, quantidadeEstoque);
+    }
 
     public Comida(int codigo, String nome, double precoBase, int quantidadeEstoque, float tempoPreparo, boolean semGluten, boolean vegano) {
         super(codigo, nome, precoBase, quantidadeEstoque); 
@@ -89,7 +84,7 @@ public class Comida extends Produto {
         this.vegano = vegano;
     }
 
-        public void alterarTempoPreparo(float novoTempo) {
+    public void alterarTempoPreparo(float novoTempo) {
         this.tempoPreparo = novoTempo;
     }
 
@@ -101,29 +96,16 @@ public class Comida extends Produto {
         this.semGluten = eSemGluten;
     }
 
-        public float getTempoPreparo() { return tempoPreparo; }
+    public float getTempoPreparo() { return tempoPreparo; }
     public boolean isSemGluten() { return semGluten; }
     public boolean isVegano() { return vegano; }
-}
-
-    // atributos necessários para puxar os dados de Produto
-    public Bebida(int codigo, String nome, double precoBase, int quantidadeEstoque) {
-        super(codigo, nome, precoBase, quantidadeEstoque);
-    }
-
-    @Override
-    public String getTipo() {
-        return "Bebida";
-    }
-}
-
-class Comida extends Produto { 
-    public Comida(int codigo, String nome, double precoBase, int quantidadeEstoque) {
-        super(codigo, nome, precoBase, quantidadeEstoque);
-    }
 
     @Override
     public String getTipo() {
         return "Comida";
     }
+
+    private float tempoPreparo; 
+    private boolean semGluten;
+    private boolean vegano;
 }
