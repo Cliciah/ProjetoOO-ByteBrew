@@ -14,6 +14,13 @@ public abstract class Produto {
     protected int quantidadeEstoque;
 } 
 
+    public Produto(int codigo, String nome, double precoBase, int quantidadeEstoque) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.precoBase = precoBase;
+        this.quantidadeEstoque = quantidadeEstoque;
+    }
+    
 // produtos
 abstract class Produto {
 
