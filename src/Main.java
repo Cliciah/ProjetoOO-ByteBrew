@@ -20,6 +20,14 @@ public abstract class Produto {
         this.precoBase = precoBase;
         this.quantidadeEstoque = quantidadeEstoque;
     }
+
+    public void atualizarEstoque(int quantidade) {
+        this.quantidadeEstoque += quantidade;
+    }
+
+    public int consultarEstoque() {
+        return this.quantidadeEstoque;
+    }
     
 // produtos
 abstract class Produto {
