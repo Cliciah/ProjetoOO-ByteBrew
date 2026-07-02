@@ -89,7 +89,19 @@ public class Comida extends Produto {
         this.vegano = vegano;
     }
 
+        public void alterarTempoPreparo(float novoTempo) {
+        this.tempoPreparo = novoTempo;
+    }
 
+    public void definirVegano(boolean eVegano) {
+        this.vegano = eVegano;
+    }
+
+    public void definirSemGluten(boolean eSemGluten) {
+        this.semGluten = eSemGluten;
+    }
+
+    
     // atributos necessários para puxar os dados de Produto
     public Bebida(int codigo, String nome, double precoBase, int quantidadeEstoque) {
         super(codigo, nome, precoBase, quantidadeEstoque);
