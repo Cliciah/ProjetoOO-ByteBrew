@@ -4,7 +4,7 @@ public class Main {
     }
 }
 
-// cardapio
+// produtos
 public abstract class Produto {
 
 
@@ -25,5 +25,24 @@ public abstract class Produto {
 
     public int consultarEstoque() {
         return this.quantidadeEstoque;
+    }
+}
+
+//atributo para a Interface de produtos
+public abstract class Produto {
+    public abstract String getTipo();
+}
+
+public class Bebida extends Produto {
+    @Override
+    public String getTipo() {
+        return "Bebida";
+    }
+}
+
+public class Comida extends Produto {
+    @Override
+    public String getTipo() {
+        return "Comida";
     }
 }
