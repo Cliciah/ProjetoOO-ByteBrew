@@ -50,7 +50,17 @@ class Bebida extends Produto {
 }
 
 //bebida
+package br.edu.cafeteria.modelo;
 
+public class Bebida extends Produto { 
+    private char tamanho; 
+    private int quantidadeCafeina; 
+
+    public Bebida(int codigo, String nome, double precoBase, int quantidadeEstoque, char tamanho, int quantidadeCafeina) {
+        super(codigo, nome, precoBase, quantidadeEstoque); 
+        this.tamanho = tamanho;
+        this.quantidadeCafeina = quantidadeCafeina;
+    }
     
     // atributos necessários para puxar os dados de Produto
     public Bebida(int codigo, String nome, double precoBase, int quantidadeEstoque) {
