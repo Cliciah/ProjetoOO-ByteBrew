@@ -74,6 +74,22 @@ public class Bebida extends Produto {
     public int getQuantidadeCafeina() { return quantidadeCafeina; }
 }
 
+//comida
+package br.edu.cafeteria.modelo;
+
+public class Comida extends Produto { 
+    private float tempoPreparo; 
+    private boolean semGluten;
+    private boolean vegano;
+
+    public Comida(int codigo, String nome, double precoBase, int quantidadeEstoque, float tempoPreparo, boolean semGluten, boolean vegano) {
+        super(codigo, nome, precoBase, quantidadeEstoque); 
+        this.tempoPreparo = tempoPreparo;
+        this.semGluten = semGluten;
+        this.vegano = vegano;
+    }
+
+
     // atributos necessários para puxar os dados de Produto
     public Bebida(int codigo, String nome, double precoBase, int quantidadeEstoque) {
         super(codigo, nome, precoBase, quantidadeEstoque);
