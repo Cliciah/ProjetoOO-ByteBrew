@@ -62,6 +62,14 @@ public class Bebida extends Produto {
         this.quantidadeCafeina = quantidadeCafeina;
     }
     
+        public void alterarTamanho(char novoTamanho) {
+        this.tamanho = novoTamanho;
+    }
+
+    public void alterarCafeina(int novaQuantidade) {
+        this.quantidadeCafeina = novaQuantidade;
+    }
+    
     // atributos necessários para puxar os dados de Produto
     public Bebida(int codigo, String nome, double precoBase, int quantidadeEstoque) {
         super(codigo, nome, precoBase, quantidadeEstoque);
