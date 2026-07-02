@@ -101,7 +101,11 @@ public class Comida extends Produto {
         this.semGluten = eSemGluten;
     }
 
-    
+        public float getTempoPreparo() { return tempoPreparo; }
+    public boolean isSemGluten() { return semGluten; }
+    public boolean isVegano() { return vegano; }
+}
+
     // atributos necessários para puxar os dados de Produto
     public Bebida(int codigo, String nome, double precoBase, int quantidadeEstoque) {
         super(codigo, nome, precoBase, quantidadeEstoque);
