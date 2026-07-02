@@ -1,28 +1,33 @@
 package br.edu.cafeteria.modelo;
-import br.edu.cafeteria.excecao.PontosInsuficientesException;
+
+import br.edu.cafeteria.excecao.PontosInsuficienteException;
 
 public class ClienteVIP extends ClienteCadastrado {
 	
-    public ClienteVIP(String nome, String cpf, int saldoXP){
-        super(nome,cpf,saldoXP);
+    public ClienteVIP(String nome, String cpf){
+        super(nome,cpf);
     }
 
 	@Override
-	public int calcularXP(double valorCompra) {
-		return (int)(valorCompra * 2);   
+	public void pagar(double valorCompra) {
+		int pontosGanhos = adicionarXP(valorCompra);
+		System.out.printf("Pagamento de R$ %.2f realizado. +%d XP acumulado (bonus VIP).%n",valorCompra, pontosGanhos);
 	}
 	
-    public int calcularPontosNecessarios(double valor) {
-        return (int) Math.ceil(valor * TAXA_CONVERSAO_XP);
-    }
-
-    public void pagarXP(Pedido pedido) {
-        int pontosNecessarios = calcularPontosNecessarios(pedido.calcularTotal());
-
-        if (getSaldoXP() < pontosNecessarios) {
-            throw new PontosInsuficientesException("Saldo XP insuficiente.");
-        }
-
-        debitarXP(pontosNecessarios);
-    }
+	@Override
+	public int xp_a_Receber(double valorCompra) {
+		return (int) Math.floor(valorCompra) * 2;
+	}
+	
+	@Override
+	public void pagarXP(double valorCompra) {
+		int custoPontos = (int) Math.ceil(valorCompra * TAXA_CONVERSAO_XP_PARA_REAL);
+		
+		if(this.saldoAcumuladoXP < custoPontos) {
+			throw new PontosInsuficienteException(String.format("Saldo insuficiente: necessario %d XP para cobrir o valor total da compra, voce tem disponivel: %d XP",custoPontos, saldoAcumuladoXP));	
+    	}
+		
+		this.saldoAcumuladoXP -= custoPontos;
+		System.out.printf("Pedido de R$ %.2f pago com %d XP. Saldo atual: %d XP. %n", valorCompra, custoPontos, saldoAcumuladoXP);
+	}
 }
