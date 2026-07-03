@@ -2,20 +2,20 @@ package br.edu.cafeteria.modelo;
 
 public class Atendente {
 	private String nome;
-	private String matricula;
+	private String cpf;
 	
 	
-	public Atendente(String nome, String matricula) {
+	public Atendente(String nome, String cpf) {
 		this.nome = nome;
-		this.matricula = matricula;
+		this.cpf = cpf;
 	}
 	
 	public String getNome() {
 		return nome;
 	}
 	
-	public String getMatricula() {
-		return matricula;
+	public String getCpf() {
+		return cpf;
 	}
 
 }
