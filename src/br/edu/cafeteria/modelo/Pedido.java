@@ -1,4 +1,5 @@
 package br.edu.cafeteria.modelo;
+
 import br.edu.cafeteria.excecao.PontosInsuficienteException;
 import java.util.List;
 import java.util.ArrayList;
@@ -62,15 +63,15 @@ public Pedido(Atendente atendente, Cliente cliente) {
         System.out.println("O preço total é " + total + " R$");
 
         if (cliente != null) {
-            int pontosGanhos = cliente.xp_a_Receber(total);
-            cliente.creditarXP(pontosGanhos);
+            int pontosGanhos = cliente.adicionarXP(total);
+            cliente.adicionarXP(pontosGanhos);
         }
 
         System.out.println("Pedido pago com sucesso");
         System.out.println("Pedido adicionado para preparo!!");
     }
 
-    public void finalizarVendaXP() throws PontosInsuficientesException{
+    public void finalizarVendaXP() throws PontosInsuficienteException{
         
         double total = calcularTotal();
 
@@ -93,7 +94,7 @@ public Pedido(Atendente atendente, Cliente cliente) {
 
     }
 
-    @Override
+   @Override
     public double aplicarDesconto(double valor){
         return valor - (valor * 0.10);
     }

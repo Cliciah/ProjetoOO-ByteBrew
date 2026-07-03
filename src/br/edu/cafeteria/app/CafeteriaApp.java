@@ -1,9 +1,7 @@
 package br.edu.cafeteria.app;
 
 public class CafeteriaApp {
-
-	public static void main(String[] args) {
-		System.out.println("Bem vindo a Byte & Brew");
-	}
-
+    public static void main(String[] args) {
+        System.out.println("Bem vindo a Byte & Brew");
+    }
 }

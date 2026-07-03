@@ -1,6 +1,11 @@
 package br.edu.cafeteria.modelo;
 
 public class Comida extends Produto { 
+	
+    private float tempoPreparo; 
+    private boolean semGluten;
+    private boolean vegano;
+
 
     public Comida(int codigo, String nome, double precoBase, int quantidadeEstoque) {
         super(codigo, nome, precoBase, quantidadeEstoque);
@@ -34,7 +39,5 @@ public class Comida extends Produto {
         return "Comida";
     }
 
-    private float tempoPreparo; 
-    private boolean semGluten;
-    private boolean vegano;
+
 }
