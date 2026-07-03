@@ -30,6 +30,7 @@ public class ClienteStandard extends ClienteCadastrado {
     	}
     	
     	this.saldoAcumuladoXP -= custoPontos;
-    	System.out.printf("Pedido de R$ %.2f pago em dinheiro + %d XP (equevalente a R$ %.2f). Saldo atual: %d XP.%n",valorCompra, valorDinheiro, custoPontos, valorCobertoXP,saldoAcumuladoXP);
+    	System.out.printf("Pedido de R$ %.2f pago: R$ %.2f em dinheiro + %d XP (equivalente a R$ %.2f). Saldo atual: %d XP.%n",
+    	        valorCompra, valorDinheiro, custoPontos, valorCobertoXP, saldoAcumuladoXP);
     }
 }

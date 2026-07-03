@@ -1,6 +1,7 @@
 package br.edu.cafeteria.modelo;
 
 import br.edu.cafeteria.excecao.PontosInsuficienteException;
+import br.edu.cafeteria.servico.Promocional;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -63,8 +64,8 @@ public Pedido(Atendente atendente, Cliente cliente) {
         System.out.println("O preço total é " + total + " R$");
 
         if (cliente != null) {
-            int pontosGanhos = cliente.adicionarXP(total);
-            cliente.adicionarXP(pontosGanhos);
+            //int pontosGanhos = cliente.pagar(total);
+            cliente.pagar(total);
         }
 
         System.out.println("Pedido pago com sucesso");
@@ -78,25 +79,20 @@ public Pedido(Atendente atendente, Cliente cliente) {
         if (cliente instanceof ClienteVIP) {
             ClienteVIP vip = (ClienteVIP) cliente;
             vip.pagarXP(total); 
-            System.out.println("Pedido pago com XP! Saldo restante: " + vip.getSaldoXP() + " XP");
+            System.out.println("Pedido pago com XP! Saldo restante: " + vip.getSaldoAcumuladoXP() + " XP");
 
         } else if (cliente instanceof ClienteStandard) {
             ClienteStandard standard = (ClienteStandard) cliente;
             standard.pagarXP(total); 
-            System.out.println("Pedido pago parcialmente com XP! Saldo restante: " + standard.getSaldoXP() + " XP");
+            System.out.println("Pedido pago parcialmente com XP! Saldo restante: " + standard.getSaldoAcumuladoXP() + " XP");
 
         }
     
-        System.out.println("Seu saldo de XP no momento é " + getSaldoXP());
+        System.out.println("Seu saldo de XP no momento é " + getSaldoAcumuladoXP());
         System.out.println("Pedido adicionado para preparo!!");
         System.out.println("Pedido pago com sucesso");
 
 
-    }
-
-   @Override
-    public double aplicarDesconto(double valor){
-        return valor - (valor * 0.10);
     }
 
 
