@@ -1,13 +1,12 @@
 package br.edu.cafeteria.modelo;
 
-// produtos
 public abstract class Produto {
-    protected int codigo;
-    protected double precoBase;
-    protected String nome;
-    protected int quantidadeEstoque;
+    private String codigo;
+    private String nome;
+    private double precoBase;
+    private int quantidadeEstoque;
 
-    public Produto(int codigo, String nome, double precoBase, int quantidadeEstoque) {
+    public Produto(String codigo, String nome, double precoBase, int quantidadeEstoque) {
         this.codigo = codigo;
         this.nome = nome;
         this.precoBase = precoBase;
@@ -18,16 +17,19 @@ public abstract class Produto {
         this.quantidadeEstoque += quantidade;
     }
 
-    public void atualizarEstoque() {
-    }
-
     public int consultarEstoque() {
         return this.quantidadeEstoque;
     }
     
-    public int getCodigo() { return codigo; }
-    public double getPrecoBase() { return precoBase; }
+    public String getCodigo() { return codigo; }
+    public void setCodigo(String codigo) { this.codigo = codigo; }
+
     public String getNome() { return nome; }
-    
-    public abstract String getTipo(); 
+    public void setNome(String nome) { this.nome = nome; }
+
+    public double getPrecoBase() { return precoBase; }
+    public void setPrecoBase(double precoBase) { this.precoBase = precoBase; }
+
+    public int getQuantidadeEstoque() { return quantidadeEstoque; }
+    public void setQuantidadeEstoque(int quantidadeEstoque) { this.quantidadeEstoque = quantidadeEstoque; }
 }

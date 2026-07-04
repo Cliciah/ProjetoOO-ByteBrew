@@ -1,43 +1,27 @@
 package br.edu.cafeteria.modelo;
 
 public class Comida extends Produto { 
-	
-    private float tempoPreparo; 
-    private boolean semGluten;
-    private boolean vegano;
+    private int tempoPreparo;
+    private boolean isVeganoSemGluten;
 
-
-    public Comida(int codigo, String nome, double precoBase, int quantidadeEstoque) {
+    public Comida(String codigo, String nome, double precoBase, int quantidadeEstoque) {
         super(codigo, nome, precoBase, quantidadeEstoque);
     }
 
-    public Comida(int codigo, String nome, double precoBase, int quantidadeEstoque, float tempoPreparo, boolean semGluten, boolean vegano) {
+    public Comida(String codigo, String nome, double precoBase, int quantidadeEstoque, int tempoPreparo, boolean isVeganoSemGluten) {
         super(codigo, nome, precoBase, quantidadeEstoque); 
         this.tempoPreparo = tempoPreparo;
-        this.semGluten = semGluten;
-        this.vegano = vegano;
+        this.isVeganoSemGluten = isVeganoSemGluten;
     }
 
-    public void alterarTempoPreparo(float novoTempo) {
+    public void alterarTempoPreparo(int novoTempo) {
         this.tempoPreparo = novoTempo;
     }
 
-    public void definirVegano(boolean eVegano) {
-        this.vegano = eVegano;
+    public void definirVeganoSemGluten(boolean ePreferencia) {
+        this.isVeganoSemGluten = ePreferencia;
     }
 
-    public void definirSemGluten(boolean eSemGluten) {
-        this.semGluten = eSemGluten;
-    }
-
-    public float getTempoPreparo() { return tempoPreparo; }
-    public boolean isSemGluten() { return semGluten; }
-    public boolean isVegano() { return vegano; }
-
-    @Override
-    public String getTipo() {
-        return "Comida";
-    }
-
-
+    public int getTempoPreparo() { return tempoPreparo; }
+    public boolean isVeganoSemGluten() { return isVeganoSemGluten; }
 }
