@@ -1,6 +1,5 @@
 package br.edu.cafeteria.modelo;
-
-import br.edu.cafeteria.excecao.PontosInsuficienteException;
+import br.edu.cafeteria.servico.Promocional;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -62,43 +61,33 @@ public Pedido(Atendente atendente, Cliente cliente) {
         double total = calcularTotal();
         System.out.println("O preço total é " + total + " R$");
 
-        if (cliente != null) {
-            int pontosGanhos = cliente.adicionarXP(total);
-            cliente.adicionarXP(pontosGanhos);
-        }
-
-        System.out.println("Pedido pago com sucesso");
-        System.out.println("Pedido adicionado para preparo!!");
+    if (cliente instanceof ClienteCadastrado) {
+        ClienteCadastrado cadastrado = (ClienteCadastrado) cliente;
+        cadastrado.pagar(total);
+    } else if (cliente instanceof ClienteCasual) {
+        ClienteCasual casual = (ClienteCasual) cliente;
+        casual.pagar(total);
+    }
     }
 
-    public void finalizarVendaXP() throws PontosInsuficienteException{
+    public void finalizarVendaXP() {
         
         double total = calcularTotal();
 
         if (cliente instanceof ClienteVIP) {
             ClienteVIP vip = (ClienteVIP) cliente;
-            vip.pagarXP(total); 
-            System.out.println("Pedido pago com XP! Saldo restante: " + vip.getSaldoXP() + " XP");
+            vip.pagarXP(total);
 
         } else if (cliente instanceof ClienteStandard) {
             ClienteStandard standard = (ClienteStandard) cliente;
-            standard.pagarXP(total); 
-            System.out.println("Pedido pago parcialmente com XP! Saldo restante: " + standard.getSaldoXP() + " XP");
-
+            standard.pagarXP(total);
         }
-    
-        System.out.println("Seu saldo de XP no momento é " + getSaldoXP());
-        System.out.println("Pedido adicionado para preparo!!");
-        System.out.println("Pedido pago com sucesso");
-
-
     }
 
-   @Override
-    public double aplicarDesconto(double valor){
-        return valor - (valor * 0.10);
-    }
 
+    public int getNumPedido() {
+        return numPedido;
+    }
 
     public Cliente getCliente() {
         return cliente;
@@ -107,6 +96,11 @@ public Pedido(Atendente atendente, Cliente cliente) {
     public Atendente getAtendente() {
         return atendente;
     }
+
+    public List<ItemPedido> getItens() {
+        return itens;
+    }
+
 
 
 }
