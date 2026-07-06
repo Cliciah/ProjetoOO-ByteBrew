@@ -14,8 +14,8 @@ public class CafeteriaApp {
         Produto lembasBread = new Comida("COM-01", "Lembas Bread", 12.00, 15, 10, true, false);
         Produto portalCake = new Comida("COM-02", "Portal Cake", 18.00, 5, 15, false, false);
         
-        Produto cafeProgramador = new Bebida("BEB-01", "Café do Programador", 8.50, 20, 'M', 180);
-        Produto pocaoMana = new Bebida("BEB-02", "Poção de Mana", 10.00, 3, 'G', 0);
+        Produto cafeProgramador = new Bebida("BEB-01", "Café do Programador", 8.50, 20, "M", 180);
+        Produto pocaoMana = new Bebida("BEB-02", "Poção de Mana", 10.00, 3, "G", 0);
 
         Atendente atendente = new Atendente("Carlos", "123.456.789-00");
         ClienteService clientes = new ClienteService();
