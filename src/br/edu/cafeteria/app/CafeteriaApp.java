@@ -49,7 +49,7 @@ public class CafeteriaApp {
 
         System.out.println("CENÁRIO 3: Testando Desconto de Evento Geek (10% em Bebidas)");
         Pedido pedido3 = new Pedido(atendente, carlos);
-        pedido3.adicionarItem(lembas, 1);       
+        pedido3.adicionarItem(lembasBread, 1);       
         pedido3.adicionarItem(pocaoMana, 2);    
 
         Promocional eventoGeek = new PromocionalGeek();
@@ -72,7 +72,7 @@ public class CafeteriaApp {
         
         System.out.println("CENÁRIO 5: Cliente VIP - Multiplicador e Erro de Resgate");
         Pedido pedido5 = new Pedido(atendente, ana);
-        pedido5.adicionarItem(lembas, 5);
+        pedido5.adicionarItem(lembasBread, 5);
         pedido5.finalizarVenda();
         System.out.println("Saldo da Ana (VIP ganha x2): " + ana.getSaldoAcumuladoXP() + " XP.");
 
@@ -80,7 +80,7 @@ public class CafeteriaApp {
             System.out.println("Ana tenta fazer uma compra nova de R$ 50,00 pagando INTEGRALMENTE com XP.");
             Pedido pedido6 = new Pedido(atendente, ana);
             pedido6.adicionarItem(cafeProgramador, 5);
-            pedido6.adicionarItem(lembas, 2);
+            pedido6.adicionarItem(lembasBread, 2);
             
             System.out.println("Total necessário para resgatar: 590 XP. Saldo atual: " + ana.getSaldoAcumuladoXP() + ".");
             pedido6.finalizarVendaXP(); 
