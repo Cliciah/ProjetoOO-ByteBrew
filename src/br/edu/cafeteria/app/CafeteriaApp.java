@@ -4,7 +4,7 @@ import br.edu.cafeteria.modelo.*;
 import br.edu.cafeteria.servico.*;
 import br.edu.cafeteria.excecao.*;
 
-public class Main {
+public class CafeteriaApp {
 
     public static void main(String[] args) {
         System.out.println("Sistema de vendas e fidelidade para a Cafeteria Geek Byte & Brew");
@@ -12,8 +12,8 @@ public class Main {
         Produto lembasBread = new Comida("COM-01", "Lembas Bread", 12.00, 15, 10, true, false);
         Produto portalCake = new Comida("COM-02", "Portal Cake", 18.00, 5, 15, false, false);
         
-        Produto cafeProgramador = new Bebida("BEB-01", "Café do Programador", 8.50, 20, 'M', 180);
-        Produto pocaoMana = new Bebida("BEB-02", "Poção de Mana", 10.00, 3, 'G', 0);
+        Produto cafeProgramador = new Bebida("BEB-01", "Café do Programador", 8.50, 20, "M", 180);
+        Produto pocaoMana = new Bebida("BEB-02", "Poção de Mana", 10.00, 3, "G", 0);
 
         Atendente atendente = new Atendente("João", "123.456.789-00");
         ClienteService clientes = new ClienteService();
@@ -24,8 +24,8 @@ public class Main {
             new ClienteVIP("Ana", "987.654.321-11")
         };
         
-        clientes.criar(c[1]); 
-        clientes.criar(c[2]);
+        clientes.criar((ClienteCadastrado) c[1]); 
+        clientes.criar((ClienteCadastrado) c[2]);
 
         System.out.println("CENÁRIO 1: Fluxo de Venda - Cliente Casual");
         Pedido pedido1 = new Pedido(atendente, c[0]);
