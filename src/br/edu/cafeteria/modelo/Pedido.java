@@ -1,4 +1,5 @@
 package br.edu.cafeteria.modelo;
+import br.edu.cafeteria.excecao.EstoqueInsuficienteException;
 import br.edu.cafeteria.servico.Promocional;
 import java.util.List;
 import java.util.ArrayList;
@@ -25,15 +26,15 @@ public Pedido(Atendente atendente, Cliente cliente) {
     this.cliente = cliente;
 }
 
-    public void adicionarItem(Produto produto){
-        itens.add(new ItemPedido( produto));
+    public void adicionarItem(Produto produto)throws EstoqueInsuficienteException{
+        itens.add(new ItemPedido( produto,1));
         System.out.println("Item adicionado ao pedido!!");
-    
     }
 
-    public void adicionarItem(Produto produto, int quantidade){
-        itens.add(new ItemPedido( produto, quantidade));
-        System.out.println("Item adicionado ao pedido!!");
+    public void adicionarItem(Produto produto, int quantidade)throws EstoqueInsuficienteException{
+        produto.atualizarEstoque(-quantidade); 
+        itens.add(new ItemPedido(produto, quantidade));
+        System.out.println("Item adicionado ao pedido!");
     
     }
 
