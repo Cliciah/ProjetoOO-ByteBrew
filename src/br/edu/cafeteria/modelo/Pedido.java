@@ -85,6 +85,38 @@ public Pedido(Atendente atendente, Cliente cliente) {
         }
     }
 
+    public void removerItem(Produto produto, int quantidade) {
+        for (int i = 0; i < itens.size(); i++) {
+            if (itens.get(i).getProduto() == produto) {
+                ItemPedido item = itens.get(i);
+
+                if (quantidade >= item.getQuantidade()) {
+                    produto.atualizarEstoque(item.getQuantidade());
+                    itens.remove(i);
+                    System.out.println("Item removido do pedido!");
+                } else {
+                    item.setQuantidade(item.getQuantidade() - quantidade);
+                    produto.atualizarEstoque(quantidade);
+                    System.out.println(quantidade + "x " + produto.getNome() + " removido(s) do pedido!");
+                }
+                return;
+            }
+        }
+        System.out.println("Item não encontrado no pedido.");
+    }
+
+    public void removerItem(Produto produto) {
+        for (int i = 0; i < itens.size(); i++) {
+            if (itens.get(i).getProduto() == produto) {
+                produto.atualizarEstoque(itens.get(i).getQuantidade());
+                itens.remove(i);
+                System.out.println("Item removido do pedido!");
+                return;
+            }
+        }
+        System.out.println("Item não encontrado no pedido.");
+    }
+
 
     public int getNumPedido() {
         return numPedido;
@@ -101,7 +133,5 @@ public Pedido(Atendente atendente, Cliente cliente) {
     public List<ItemPedido> getItens() {
         return itens;
     }
-
-
 
 }
