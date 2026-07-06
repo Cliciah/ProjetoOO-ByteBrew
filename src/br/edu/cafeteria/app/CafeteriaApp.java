@@ -8,7 +8,9 @@ public class CafeteriaApp {
 
     public static void main(String[] args) {
         System.out.println("Sistema de vendas e fidelidade para a Cafeteria Geek Byte & Brew");
-
+        
+        System.out.println("                     ");
+        
         Produto lembasBread = new Comida("COM-01", "Lembas Bread", 12.00, 15, 10, true, false);
         Produto portalCake = new Comida("COM-02", "Portal Cake", 18.00, 5, 15, false, false);
         
@@ -26,8 +28,10 @@ public class CafeteriaApp {
         
         clientes.criar((ClienteCadastrado) c[1]); 
         clientes.criar((ClienteCadastrado) c[2]);
-
-        System.out.println("CENÁRIO 1: Fluxo de Venda - Cliente Casual");
+        
+        
+        System.out.println("CENARIO 1: fluxo de venda - ClienteCasual");
+        System.out.println("-----------------");
         Pedido pedido1 = new Pedido(atendente, c[0]);
         
         pedido1.adicionarItem(cafeProgramador, 1); 
@@ -35,29 +39,39 @@ public class CafeteriaApp {
 
         double totalOriginal = pedido1.calcularTotal();
         pedido1.finalizarVenda();
-        System.out.println("Valor do pedido: R$ " + pedido1.calcularTotal() + ".");
+        System.out.println("==================");
+        System.out.println("Valor do pedido: R$ " + pedido1.calcularTotal());
+        System.out.println("==================");
+        System.out.println("                     ");
 
-
-        System.out.println("CENÁRIO 2: Carlos Standard acumulando XP (1 para 1)");
+        System.out.println("CENARIO 2: Carlos Standard acumulando XP (1 para 1)");
+        System.out.println("-----------------");
         Pedido pedido2 = new Pedido(atendente, c[1]);
-        
         pedido2.adicionarItem(portalCake, 1); 
         pedido2.adicionarItem(pocaoMana, 1);  
         pedido2.finalizarVenda();
-        System.out.println("XP Acumulado pelo Carlos: " + ((ClienteStandard) c[1]).getSaldoAcumuladoXP() + " XP.");
-
-
+        System.out.println("==================");
+        System.out.println("XP Acumulado pelo Carlos: " + ((ClienteStandard) c[1]).getSaldoAcumuladoXP() + " XP");
+        System.out.println("==================");
+        System.out.println("                     ");
+        
+        
         System.out.println("CENÁRIO 3: Testando Desconto de Evento Geek (10% em Bebidas)");
+        System.out.println("-----------------");
         Pedido pedido3 = new Pedido(atendente, c[1]);
         pedido3.adicionarItem(lembasBread, 1);       
         pedido3.adicionarItem(pocaoMana, 2);    
 
         Promocional eventoGeek = new PromocionalGeek();
         double totalComDesconto = pedido3.calcularTotal(eventoGeek);
-        System.out.printf("Valor Bruto: R$" + pedido3.calcularTotal() + " | Valor com Desconto de Evento: R$" + totalComDesconto + ".");
-
+        System.out.println("==================");
+        System.out.printf("Valor Bruto: R$" + pedido3.calcularTotal() + " | Valor com Desconto de Evento: R$" + totalComDesconto + "%n");
+        System.out.println("==================");
+        System.out.println("                     ");
+     
 
         System.out.println("CENÁRIO 4: Forçando Erro de Garantia de Estoque");
+        System.out.println("-----------------");
         try {
             Pedido pedido4 = new Pedido(atendente, c[2]);
             System.out.println("Estoque disponível de Portal Cake: " + portalCake.consultarEstoque());
@@ -66,26 +80,36 @@ public class CafeteriaApp {
             pedido4.adicionarItem(portalCake, 10); 
             
         } catch (EstoqueInsuficienteException e) {
+        	System.out.println("==================");
             System.out.println("[ERRO DE SISTEMA CAPTURADO]: " + e.getMessage() + ".");
+            System.out.println("==================");
+           
         }
-
+        System.out.println("                     ");
         System.out.println("CENÁRIO 5: Cliente VIP - Multiplicador e Erro de Resgate");
+        System.out.println("-----------------");
         Pedido pedido5 = new Pedido(atendente, c[2]);
         pedido5.adicionarItem(lembasBread, 5);
         pedido5.finalizarVenda();
         System.out.println("Saldo da Ana (VIP ganha x2): " + ((ClienteVIP) c[2]).getSaldoAcumuladoXP() + " XP.");
 
         try {
+        
             System.out.println("Ana tenta fazer uma compra nova de R$ 50,00 pagando INTEGRALMENTE com XP.");
+  
             Pedido pedido6 = new Pedido(atendente, c[2]);
             pedido6.adicionarItem(cafeProgramador, 5);
             pedido6.adicionarItem(lembasBread, 2);
             
+            System.out.println("==================");
             System.out.println("Total necessário para resgatar: 590 XP. Saldo atual: " + ((ClienteVIP) c[2]).getSaldoAcumuladoXP() + ".");
             pedido6.finalizarVendaXP(); 
+            System.out.println("==================");
             
         } catch (PontosInsuficienteException e) {
+        	System.out.println("==================");
             System.out.println("[ERRO DE RESGATE CAPTURADO]: " + e.getMessage() + ".");
+            System.out.println("==================");
         }
     }
 }
