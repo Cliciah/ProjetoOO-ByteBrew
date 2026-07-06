@@ -31,7 +31,6 @@ public class Main {
         pedido1.adicionarItem(cafeProgramador, 1); 
         pedido1.adicionarItem(lembasBread, 2); 
 
-        double totalOriginal = pedido1.calcularTotal();
         pedido1.finalizarVenda();
         System.out.println("Valor do pedido: R$ " + pedido1.calcularTotal() + ".");
 
